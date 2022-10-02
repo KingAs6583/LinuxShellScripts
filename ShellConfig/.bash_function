@@ -1,0 +1,8 @@
+# -*- shell-script -*-
+function msg(){
+echo "hi $USER"
+}
+
+show(){
+echo "king"
+}
