@@ -3,6 +3,63 @@ function msg(){
 echo "hi $USER"
 }
 
-show(){
-echo "king"
+globalConfig(){
+#below are identity for user commit on global level in your system
+read -p "Enter User Name : " userName
+read -p "Enter Email Address : " email 
+
+git config --global user.name "$userName"
+git config --global user.email "$email"
+
+git config --list  #To list config
+unset -v userName email
+
 }
+
+localConfig(){
+read -p "Enter User Name : " userName
+read -p "Enter Email Address : " email 
+
+git config user.name "$userName"
+git config user.email "$email"
+
+unset -v userName email
+}
+
+hint(){
+echo " For more info man the below"
+echo "git-add | git-branch | git-push | git-remote | git-config"
+echo "For General info git --help | more "
+echo "if push tell to pull request use -f option with push"
+echo "Branch are use for code or features seperation and then merge to main branche"
+}
+
+setupGit(){
+#create or reinitialize an git repo
+if [ $# -eq 2 ]; then
+repoUrl=$2
+git init
+git add .
+git commit -m "$1"
+git remote add origin $repoUrl.git
+git branch -m master main
+git push -u origin main #master is branch name
+git status
+git config --list
+hint
+else
+echo "provide commit message and repo url"
+fi
+}
+
+
+upload(){
+git init
+git add .
+git commit -m "$1"
+git push -u origin main
+git status
+hint
+}
+
+
