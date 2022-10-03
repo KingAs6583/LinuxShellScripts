@@ -14,6 +14,7 @@ downloadPath=~/Downloads/LinuxShellScripts
 movePath=~/
 
  if [ -f $downloadPath/ShellConfig/.bash_color ]; then
+  sudo chmod 771 $downloadPath/ShellConfig/.bash_color
   source $downloadPath/ShellConfig/.bash_color
  fi
 
@@ -23,11 +24,7 @@ copyFiles(){
 
  printf "\n \t \t $BCyan SetUping Files and Directories .... $Color_Off \n"
 
- #Making all .sh file runable
-  printf "\n $BGreen Giving excution permission to all .sh files from backup.... $Color_Off \n"
-  sudo chmod 731 $downloadPath/*.sh
-  sudo chmod 731 $downloadPath/ShellConfig/.bash*
-
+ 
  printf "\n Copying Backup $BBlue directory scripts from download to /bin/ .... $Color_Off \n"
 
  #copy file to /bin
@@ -40,6 +37,12 @@ copyFiles(){
 
  #copying config to .bash file in home dir
  sudo cp  $downloadPath/ShellConfig/.bash* ~/ 
+
+  #Making all .sh file runable
+  printf "\n $BGreen Giving excution permission to all .sh files from backup.... $Color_Off \n"
+  sudo chmod 771 /usr/bin/*.sh
+  sudo chmod 771 ~/.bash*
+
 
  #moving this file to home dir
  sudo mv -i $downloadPath ~/Coding/
