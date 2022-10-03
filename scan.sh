@@ -10,69 +10,68 @@ echo "-----------------------------------------------------------------------"
 fi
 }
 
-line
-echo " Fully scaning of bash user define file Started .... "
-line
-scan=( "update.sh" "jarvis.sh" "cmd_edit.sh" "doc.sh" "code.sh"
-"firefox.sh" "run.sh" "clean.sh" "Backup.sh" "android.sh" )
+#colors
+red='\033[1;31m'
+end='\033[0m'
 
-#sub files of files
-sub=([1]=".user_defind_cmd"
-[2]="documents.txt")
+scanScripts(){
 
-#directories for files
-#Backup_codes Android_code Linux_code.sh python_code
+line
+echo " Fully scaning of bash user define scripts Started .... "
+line
+
+scripts=( "update.sh" "cmd_edit.sh" "diff.sh" "RAM_info.sh" "scan.sh" 
+"systeminfo.sh" "firefox.sh" "setup.sh" "clean.sh" "syncBackup.sh" )
+ 
+subFiles=( ".bashrc" ".bash_aliases" ".bash_function" ".zshrc" ".bash_color" )
+
+mainPath=/usr/bin
+localPath=~/Coding/LinuxScripts
+localSubPath=$localPath/ShellConfig
+
+limit=${#subFiles[*]}
+i=0
+size=${#scripts[*]}
+
+while [ $i -lt $size ]
+do
+
+#checking main path script against local path 
+if [[ -f $mainPath/${scripts[$i]} ]] && [[ -f $localPath/${scripts[$i]} ]]; then
+n=1
+else
+echo " ${scripts[$i]} not found $size"
+fi
+
+#checking local sub path files against home dir files
+if [ $i -lt $limit ]; then
+ if [[ ! -f $localSubPath/${subFiles[$i]} ]] && [[ -f $HOME/${subFiles[$i]} ]]; then
+ printf "\n $red ${subFiles[$i]} not found $end \n" 
+ fi
+fi
+
+i=$(expr $i + 1)
+done
+
+printf "\n Scanned Files are : \n"
+printf " %18s %18s %18s \n" ${scripts[*]} ${subFiles[*]} 
+
+}
+
+scanDir(){
+
+#directories for files in hash map
 dir=([1]="python3_pgm"
 [2]="venv"
 [3]="java_pgm"
 [4]="cpp_gcc_pgm")
 
 #logic and scaning begins
-no=0
-limit=${#scan[*]}
+
+limit=${#dir[*]}
 search=0
-
-#
-echo " 1 If you want scan in Backup dir "
-echo " 2 If you want scan in usr/bin dir "
+##checking directory exits
 line
-read path
-line
-if [ $path -eq 1 ]; then
-path="/home/kingas/Backup_codes/Linux_code.sh"
-else
-path="/usr/bin"
-fi
-
-# checking file exits
-while [ $no -le $limit ]
-do
-no=$(expr $no + 1)
-if [[ -f "$path/${scan[$no]}" ]]; then
-echo " $no ${scan[$no]} Exists scaning $(( $no * 10 ))%"
-line
-else
-search=$(expr $search + 1)
-echo " !! ${scan[$no]} Do not Exists Download it from Drive scanning  $(($no * 10))%"
-line
-fi
-done
-no=0
-while [ $no -le 1 ]
-do
-no=$(expr $no + 1)
-if [[ -f "${sub[$no]}" ]]; then
-echo " ${sub[$no]} is exist to support ${scan[4]} "
-line
-else
-search=$(expr $search + 1)
-echo " !! ${sub[$no]} is not exits"
-line
-fi
-done
-
-#checking directory exits
-
 if [[ -d "Backup_codes" && -d "Backup_codes/Android_code" && -d "Backup_codes/Linux_code.sh" && -d "Backup_codes/python_code" ]]; then
 echo " Backup_codes and it is Sub directories exist "
 else
@@ -97,8 +96,12 @@ echo " !! java pgm and cpp_gcc_pgm not exist "
 fi
 line
 
-unset scan
-diff.sh
+}
 
+#diff.sh
+scanDir
+scanScripts
+line
 echo " Scanning Complete $search "
+unset -v scripts subFiles
 line

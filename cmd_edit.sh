@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ ~/shell_color ]; then
-source ~/shell_color
+if [ -f ~/.bash_color ]; then
+source ~/.bash_color
 fi
 
 #Note for matth opearation with out expr
@@ -36,7 +36,7 @@ esac
 
 cmd=( "" "update.sh" "doc.sh" "cmd_edit.sh" "Backup.sh" "firefox.sh" 
  "RAM_info.sh" "run.sh" "setup.sh" "scan.sh" "diff.sh" "history.sh"
- "sync_backup.sh"
+ "syncBackup.sh"
  )
  
 NoOfCmd=${#cmd[*]}
@@ -86,9 +86,9 @@ echo " Choose which user defind cmd you want to Edit "
 line
 printf "\n 0.Read cmd  \t Read about user defind cmds \n\n"
 
-printf " |$Cyan %s \t |$Green %s \t |$Yellow %s \t | $Color_Off \n" ${cmd[*]} ;
+printf " |$Cyan %18s |$Green %18s |$Yellow %18s | $Color_Off \n" ${cmd[*]} ;
 
-printf "\n $BRed Enter any number greater than %d To Exit.$Color_Off... \n " $NoOfCmd ;
+printf "\n $BRed Enter any number greater than %d To Exit.$Color_Off... \n" $NoOfCmd ;
 line
 
 read opt

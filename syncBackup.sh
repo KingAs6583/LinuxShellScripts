@@ -2,6 +2,10 @@
 
 #This file is use to backup and sync the contain
 
+if [ -f ~/.bash_color ]; then 
+ source ~/.bash_color
+fi 
+
 star(){
 col=$(tput cols)
 if [ $col -le 135 -a $col -gt 80 ]; then
@@ -20,7 +24,7 @@ syncScripts(){
  rm -i ~/Coding/LinuxScripts/gettext.sh
  rsync -azvh ~/.bash* ~/Coding/LinuxScripts/ShellConfig/
  rsync -azvh ~/.zshrc ~/Coding/LinuxScripts/ShellConfig/
- 
+ rm -i  ~/Coding/LinuxScripts/ShellConfig/.bash_history
  #rsync -a is file which sync or copy the data from dir to dir
  #rsync -zvh is to copy file to file
 
@@ -30,7 +34,7 @@ comFile=( "cpp.tar.gz" "java.tar.gz" "python.tar.gz" "web.tar.gz" "linux.tar.gz"
 comSize=${#comFile[*]}
 readonly path=~/Coding/BackUp
 dirFile=( "cpp_gcc_pgm" "java_pgm" "python3_pgm" "web_developement" "LinuxScripts" )
-readonly D=6583
+readonly D=$(expr 6500 + 83)
 
 compress(){
  echo "Compression start ..."
@@ -64,13 +68,14 @@ extract(){
 show(){
 
  star
- printf " \n \n  \t syncing or copying or backup ... "
- printf " \n syncing of backup directory to google drive start ..."
- printf " \n choose from the option \n"
- printf " \n %s \t %s \t %s \n" "1 ${comFile[0]}" "2 ${comFile[1]}" "3 ${comFile[2]}"
- printf " \n %s \t %s \t %s \n" "4 ${comFile[3]}" "5 ${comFile[4]}" "6 Android.zip"
- printf " \n \n Note : First open $USER$D@gmail.com drive in files under Network section before choose a option "
- printf " \n \t Press Any Or Number Greater Than 6 To Exit ... \n"
+ printf " \n \n  \t $BGreen syncing or copying or backup ... $Color_Off"
+ printf " \n Syncing of backup directory to google drive start ..."
+ printf " \n \n $BOrange Choose from the option $Color_Off\n"
+ printf " \n |$BCyan %s \t|$Yellow  %s \t|$Purple %s \t|$Color_Off \n" "1 ${comFile[0]}" "2 ${comFile[1]}" "3 ${comFile[2]}"
+ printf " \n |$BCyan %s \t|$Yellow  %s \t|$Purple %s \t|$Color_Off \n" "4 ${comFile[3]}" "5 ${comFile[4]}" "6 Android.zip"
+ printf " \n \n$BRed Note : First open $USER$D@gmail.com drive in files under Network section before choose a option $Color_Off"
+ printf " \n \t$BBlue Before syncing compress the files first $Color_OFF"
+ printf " \n \t$BRed Press Any Or Number Greater Than 7 To Exit ...$Color_Off \n"
  star
   #when setting up first know how to sync file in linux using online account
   #system setting > onlineAccount 
