@@ -1,15 +1,19 @@
 #commom alias
 alias update="update.sh"
 alias Test="cd ~/TestingWorkSpace; ls "
+alias kotlin="firefox https://developer.android.com/training/kotlinplayground?authuser=2"
+alias kotlinCourse="firefox https://developer.android.com/courses/android-basics-kotlin/course?authuser=2"
 
 #enable bluetooth for this distro throught rt driver of hp
 alias bluetoothON="sudo modprobe rtbth" 
+
 #open paricular language directory from vs code
-alias pythonCode="code /home/kingas/python3_pgm"
-alias javaCode="code /home/kingas/java_pgm"
-alias cppCode="code /home/kingas/cpp_gcc_pgm"
-alias webDev="code /home/kingas/web_developement"
-alias dotNet="code /home/kingas/dot_Net"
+alias pythonCode="code /home/kingas/Coding/python3_pgm"
+alias javaCode="code /home/kingas/Coding/java_pgm"
+alias cppCode="code /home/kingas/Coding/cpp_gcc_pgm"
+alias webDev="code /home/kingas/Coding/web_developement"
+alias dotNet="code /home/kingas/Coding/dot_Net"
+alias readMe="code /home/kingas/Coding/ReadME.MD"
 
 #"----./Android_app/android-studio/bin/studio.sh---"
 alias android="./Android_app/android-studio/bin/studio.sh"

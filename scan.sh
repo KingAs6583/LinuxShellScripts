@@ -26,7 +26,7 @@ scripts=( "update.sh" "cmd_edit.sh" "diff.sh" "RAM_info.sh" "scan.sh"
 subFiles=( ".bashrc" ".bash_aliases" ".bash_function" ".zshrc" ".bash_color" )
 
 mainPath=/usr/bin
-localPath=~/Coding/LinuxScripts
+localPath=~/Coding/LinuxShellScripts
 localSubPath=$localPath/ShellConfig
 
 limit=${#subFiles[*]}

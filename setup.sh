@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 line(){
  col=$(tput cols)
@@ -8,7 +8,7 @@ line(){
   echo "**************************************************************************"
  fi
 }
-
+#hi
 #Global Declaration
 downloadPath=~/Downloads/LinuxShellScripts
 movePath=~/
@@ -31,9 +31,11 @@ copyFiles(){
  sudo cp -i $downloadPath/*.sh /usr/bin/
 
  #creating backup for .bash files
- mkdir ~/BackupConfig
- sudo cp -i ~/.bash* ~/BackupConfig/
- echo "files are hidden in this directory run ls -a to view them" >> ~/BackupConfig/readme.txt
+ if [[ ! -d ~/BackupConfig ]] && [[ -d ~/Coding/LinuxShellScripts ]]; then
+  mkdir ~/BackupConfig
+  sudo cp -i ~/.bash* ~/BackupConfig/
+  echo "files are hidden in this directory run ls -a to view them" >> ~/BackupConfig/readme.txt
+ fi
 
  #copying config to .bash file in home dir
  sudo cp  $downloadPath/ShellConfig/.bash* ~/ 
