@@ -8,7 +8,7 @@ line(){
   echo "**************************************************************************"
  fi
 }
-#hi
+
 #Global Declaration
 downloadPath=~/Downloads/LinuxShellScripts
 movePath=~/
@@ -39,11 +39,12 @@ copyFiles(){
 
  #copying config to .bash file in home dir
  sudo cp  $downloadPath/ShellConfig/.bash* ~/ 
-
-  #Making all .sh file runable
-  printf "\n $BGreen Giving excution permission to all .sh files from backup.... $Color_Off \n"
-  sudo chmod 755 /usr/bin/*.sh
-  sudo chmod 755 ~/.bash*
+ source ~/.bashrc
+ 
+ #Making all .sh file runable
+ printf "\n $BGreen Giving excution permission to all .sh files from backup.... $Color_Off \n"
+ sudo chmod 755 /usr/bin/*.sh
+ sudo chmod 755 ~/.bash*
 
 
  #moving this file to home dir
