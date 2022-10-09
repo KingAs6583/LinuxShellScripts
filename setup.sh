@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
 line(){
  col=$(tput cols)
@@ -14,7 +14,7 @@ downloadPath=~/Downloads/LinuxShellScripts
 movePath=~/
 
  if [ -f $downloadPath/ShellConfig/.bash_color ]; then
-  sudo chmod 771 $downloadPath/ShellConfig/.bash_color
+  sudo chmod 755 $downloadPath/ShellConfig/.bash_color
   source $downloadPath/ShellConfig/.bash_color
  fi
 
@@ -40,8 +40,8 @@ copyFiles(){
 
   #Making all .sh file runable
   printf "\n $BGreen Giving excution permission to all .sh files from backup.... $Color_Off \n"
-  sudo chmod 771 /usr/bin/*.sh
-  sudo chmod 771 ~/.bash*
+  sudo chmod 755 /usr/bin/*.sh
+  sudo chmod 755 ~/.bash*
 
 
  #moving this file to home dir
