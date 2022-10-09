@@ -20,11 +20,11 @@ syncScripts(){
  #copying .sh file from bin to backup directory
 
  rsync -azvh /usr/bin/*.sh ~/Coding/LinuxShellScripts/
- rm -i ~/Coding/LinuxShellScripts/amuFormat.sh
- rm -i ~/Coding/LinuxShellScripts/gettext.sh
+ rm ~/Coding/LinuxShellScripts/amuFormat.sh
+ rm ~/Coding/LinuxShellScripts/gettext.sh
  rsync -azvh ~/.bash* ~/Coding/LinuxShellScripts/ShellConfig/
  rsync -azvh ~/.zshrc ~/Coding/LinuxShellScripts/ShellConfig/
- rm -i  ~/Coding/LinuxShellScripts/ShellConfig/.bash_history
+ rm ~/Coding/LinuxShellScripts/ShellConfig/.bash_history
  #rsync -a is file which sync or copy the data from dir to dir
  #rsync -zvh is to copy file to file
 
