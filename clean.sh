@@ -1,4 +1,4 @@
-#
+#!/bin/sh
 #this file is use to clean the laptop
 line()
 {
